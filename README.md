@@ -1,4 +1,4 @@
-# Otimiza-o-de-Pre-o
+# Otimizacao de Preco
 Modelo de demanda linear &amp; maximização de lucro mensal da clínica.
 
 Para reproduzir tudo:
