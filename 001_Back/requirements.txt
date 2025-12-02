@@ -1,0 +1,4 @@
+flask
+flask-cors
+pydantic>=2
+sympy

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Otimização de Preço de Consulta</title>
+    <link rel="stylesheet" href="Op.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>Otimização de Preço de Consulta Particular</h1>
+      <p class="subtitle">
+        Modelo de demanda linear & maximização de lucro mensal da clínica.
+      </p>
+    </header>
+
+    <main class="container">
+      <!-- Bloco 1: Otimização direta -->
+      <section class="card">
+        <h2>1. Otimizar preço com parâmetros conhecidos</h2>
+        <p class="section-desc">
+          Informe os parâmetros do modelo de demanda e de custos para calcular o preço ótimo.
+        </p>
+
+        <div class="grid">
+          <div class="field">
+            <label for="alpha">α (demanda potencial)</label>
+            <input id="alpha" type="number" step="0.01" value="400" />
+            <small>Consultas/mês quando o preço tende a 0.</small>
+          </div>
+
+          <div class="field">
+            <label for="beta">β (sensibilidade ao preço)</label>
+            <input id="beta" type="number" step="0.01" value="1.2" />
+            <small>Queda da demanda a cada +R$ 1 no preço.</small>
+          </div>
+
+          <div class="field">
+            <label for="c">c (custo variável por consulta)</label>
+            <input id="c" type="number" step="0.01" value="120" />
+          </div>
+
+          <div class="field">
+            <label for="F">F (custo fixo mensal)</label>
+            <input id="F" type="number" step="0.01" value="30000" />
+          </div>
+
+          <div class="field">
+            <label for="pMin">Preço mínimo (pMin)</label>
+            <input id="pMin" type="number" step="0.01" value="150" />
+          </div>
+
+          <div class="field">
+            <label for="pMax">Preço máximo (pMax)</label>
+            <input id="pMax" type="number" step="0.01" value="350" />
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="btnOptimize" class="btn primary">
+            Calcular preço ótimo
+          </button>
+        </div>
+
+        <div id="optOut" class="output">
+          <em>O resultado da otimização aparecerá aqui.</em>
+        </div>
+      </section>
+
+      <!-- Bloco 2: Ajuste de demanda + otimização -->
+      <section class="card">
+        <h2>2. Ajustar demanda com dados reais e otimizar</h2>
+        <p class="section-desc">
+          Informe pares de (preço, quantidade de consultas) para estimar a demanda
+          via regressão linear e, em seguida, calcular o preço ótimo.
+        </p>
+
+        <div class="grid-2">
+          <div class="field">
+            <label for="data">Dados históricos (um par por linha)</label>
+            <textarea id="data" rows="8" spellcheck="false">180,220
+200,190
+220,170
+250,150</textarea>
+            <small>Formato: <code>preço,quantidade</code> (vírgula ou ponto e vírgula).</small>
+          </div>
+
+          <div class="side-panel">
+            <h3>Parâmetros para otimização</h3>
+
+            <div class="field">
+              <label for="fit_c">c (custo variável por consulta)</label>
+              <input id="fit_c" type="number" step="0.01" value="120" />
+            </div>
+
+            <div class="field">
+              <label for="fit_F">F (custo fixo mensal)</label>
+              <input id="fit_F" type="number" step="0.01" value="30000" />
+            </div>
+
+            <div class="field">
+              <label for="fit_pMin">Preço mínimo (pMin)</label>
+              <input id="fit_pMin" type="number" step="0.01" value="150" />
+            </div>
+
+            <div class="field">
+              <label for="fit_pMax">Preço máximo (pMax)</label>
+              <input id="fit_pMax" type="number" step="0.01" value="350" />
+            </div>
+
+            <div class="actions">
+              <button id="btnFit" class="btn primary">
+                Ajustar demanda e otimizar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="fitOut" class="output">
+          <em>O ajuste da demanda e o resultado da otimização aparecerão aqui.</em>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <small>
+        Projeto acadêmico – Otimização de preço de consulta particular com demanda linear.
+      </small>
+    </footer>
+
+    <script src="Op.js"></script>
+  </body>
+</html>
